@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentAMovie", "RentAMovie\RentAMovie.csproj", "{E20D5F66-9995-4F75-B4B6-D0ED750362FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentAMovie.Infrastructure", "RentAMovie.Infrastructure\RentAMovie.Infrastructure.csproj", "{C850CBE1-E1AA-4970-9CFD-DAC15427D395}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentAMovie.Specs", "RentAMovie.Specs\RentAMovie.Specs.csproj", "{FE026847-3F86-4513-923A-58089973DF9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentAMovie.Core", "RentAMovie.Core\RentAMovie.Core.csproj", "{C62FB7B9-199B-4D88-8CFF-279CE7E5A8AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentAMovie.Contract", "RentAMovie.Contract\RentAMovie.Contract.csproj", "{8C6B6ED2-167A-4C70-A729-04659EB400D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+	EndGlobalSection
+EndGlobal
