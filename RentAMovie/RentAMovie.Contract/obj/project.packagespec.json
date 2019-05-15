@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "D:\\Notatki\\Semestr6\\DOT\\RentAMovie\\RentAMovie\\RentAMovie.Contract\\RentAMovie.Contract.csproj",
+    "projectUniqueName": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Contract\\RentAMovie.Contract.csproj",
     "projectName": "RentAMovie.Contract",
-    "projectPath": "D:\\Notatki\\Semestr6\\DOT\\RentAMovie\\RentAMovie\\RentAMovie.Contract\\RentAMovie.Contract.csproj",
-    "outputPath": "D:\\Notatki\\Semestr6\\DOT\\RentAMovie\\RentAMovie\\RentAMovie.Contract\\obj\\",
+    "projectPath": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Contract\\RentAMovie.Contract.csproj",
+    "outputPath": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Contract\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

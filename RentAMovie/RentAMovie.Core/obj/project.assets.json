@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Notatki\\Semestr6\\DOT\\RentAMovie\\RentAMovie\\RentAMovie.Core\\RentAMovie.Core.csproj",
+      "projectUniqueName": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Core\\RentAMovie.Core.csproj",
       "projectName": "RentAMovie.Core",
-      "projectPath": "D:\\Notatki\\Semestr6\\DOT\\RentAMovie\\RentAMovie\\RentAMovie.Core\\RentAMovie.Core.csproj",
+      "projectPath": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Core\\RentAMovie.Core.csproj",
       "packagesPath": "C:\\Users\\Kasia\\.nuget\\packages\\",
-      "outputPath": "D:\\Notatki\\Semestr6\\DOT\\RentAMovie\\RentAMovie\\RentAMovie.Core\\obj\\",
+      "outputPath": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

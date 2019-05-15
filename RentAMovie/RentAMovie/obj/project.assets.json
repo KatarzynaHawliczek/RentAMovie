@@ -12077,11 +12077,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Notatki\\Semestr6\\DOT\\RentAMovie\\RentAMovie\\RentAMovie\\RentAMovie.csproj",
+      "projectUniqueName": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie\\RentAMovie.csproj",
       "projectName": "RentAMovie",
-      "projectPath": "D:\\Notatki\\Semestr6\\DOT\\RentAMovie\\RentAMovie\\RentAMovie\\RentAMovie.csproj",
+      "projectPath": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie\\RentAMovie.csproj",
       "packagesPath": "C:\\Users\\Kasia\\.nuget\\packages\\",
-      "outputPath": "D:\\Notatki\\Semestr6\\DOT\\RentAMovie\\RentAMovie\\RentAMovie\\obj\\",
+      "outputPath": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
