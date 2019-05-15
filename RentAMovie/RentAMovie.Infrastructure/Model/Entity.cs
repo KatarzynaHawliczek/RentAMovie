@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RentAMovie.Infrastructure
+namespace RentAMovie.Infrastructure.Model
 {
     public class Entity
     {
