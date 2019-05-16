@@ -12,6 +12,7 @@ namespace RentAMovie.Infrastructure.Model
         public byte[] Image { get; set; }
         public string Country { get; set; }
         public bool IsRented { get; set; }
-        public Borrower Borrower { get; set; }
+        public Client Client { get; set; }
+        public Borrow Borrow { get; set; }
     }
 }
