@@ -62,6 +62,7 @@ namespace RentAMovie.Infrastructure.Logic
                 clientToUpdate.FirstName = entity.FirstName;
                 clientToUpdate.LastName = entity.LastName;
                 clientToUpdate.Email = entity.Email;
+                clientToUpdate.PhoneNumber = entity.PhoneNumber;
                 clientToUpdate.Address = entity.Address;
                 clientToUpdate.Borrow = entity.Borrow;
                 clientToUpdate.Movies = entity.Movies;
