@@ -15,6 +15,9 @@
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {
+          "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Core\\RentAMovie.Core.csproj": {
+            "projectPath": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Core\\RentAMovie.Core.csproj"
+          },
           "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Infrastructure\\RentAMovie.Infrastructure.csproj": {
             "projectPath": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Infrastructure\\RentAMovie.Infrastructure.csproj"
           }

@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\RentAMovie.Core\RentAMovie.Core.csproj" />
       <ProjectReference Include="..\RentAMovie.Infrastructure\RentAMovie.Infrastructure.csproj" />
     </ItemGroup>
 

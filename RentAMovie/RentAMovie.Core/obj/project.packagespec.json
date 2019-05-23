@@ -14,7 +14,14 @@
     ],
     "frameworks": {
       "netcoreapp2.2": {
-        "projectReferences": {}
+        "projectReferences": {
+          "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Contract\\RentAMovie.Contract.csproj": {
+            "projectPath": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Contract\\RentAMovie.Contract.csproj"
+          },
+          "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Infrastructure\\RentAMovie.Infrastructure.csproj": {
+            "projectPath": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Infrastructure\\RentAMovie.Infrastructure.csproj"
+          }
+        }
       }
     },
     "warningProperties": {

@@ -4598,6 +4598,30 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "RentAMovie.Contract/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/RentAMovie.Contract.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RentAMovie.Contract.dll": {}
+        }
+      },
+      "RentAMovie.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "RentAMovie.Contract": "1.0.0",
+          "RentAMovie.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RentAMovie.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RentAMovie.Core.dll": {}
+        }
+      },
       "RentAMovie.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
@@ -12417,6 +12441,16 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "RentAMovie.Contract/1.0.0": {
+      "type": "project",
+      "path": "../RentAMovie.Contract/RentAMovie.Contract.csproj",
+      "msbuildProject": "../RentAMovie.Contract/RentAMovie.Contract.csproj"
+    },
+    "RentAMovie.Core/1.0.0": {
+      "type": "project",
+      "path": "../RentAMovie.Core/RentAMovie.Core.csproj",
+      "msbuildProject": "../RentAMovie.Core/RentAMovie.Core.csproj"
+    },
     "RentAMovie.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../RentAMovie.Infrastructure/RentAMovie.Infrastructure.csproj",
@@ -12429,6 +12463,7 @@
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
+      "RentAMovie.Core >= 1.0.0",
       "RentAMovie.Infrastructure >= 1.0.0"
     ]
   },
@@ -12460,6 +12495,9 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
+            "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Core\\RentAMovie.Core.csproj": {
+              "projectPath": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Core\\RentAMovie.Core.csproj"
+            },
             "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Infrastructure\\RentAMovie.Infrastructure.csproj": {
               "projectPath": "D:\\Notatki\\Semestr6\\DOT\\RAM\\RentAMovie\\RentAMovie.Infrastructure\\RentAMovie.Infrastructure.csproj"
             }
