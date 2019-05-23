@@ -11,7 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using RentAMovie.Core.Services;
 using RentAMovie.Infrastructure.Context;
+using RentAMovie.Infrastructure.Logic;
 
 namespace RentAMovie
 {
@@ -28,6 +30,10 @@ namespace RentAMovie
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<IClientService, ClientService>();
             services.AddDbContext<MovieContext>(options =>
                 options.UseSqlite("DataSource=dbo.RentAMovieApi.db",
                     builder => builder.MigrationsAssembly("RentAMovie.Infrastructure")
