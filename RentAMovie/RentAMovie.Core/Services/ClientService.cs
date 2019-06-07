@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RentAMovie.Contract.ClientDto;
+using RentAMovie.Contract.Dto;
 using RentAMovie.Core.Services.Mappers;
 using RentAMovie.Infrastructure.Logic;
 

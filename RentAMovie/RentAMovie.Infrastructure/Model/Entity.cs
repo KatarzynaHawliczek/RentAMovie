@@ -8,7 +8,7 @@ namespace RentAMovie.Infrastructure.Model
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
+        public long? Id { get; set; }
         public DateTime DateOfCreation { get; set; }
         public DateTime DateOfUpdate { get; set; }
     }

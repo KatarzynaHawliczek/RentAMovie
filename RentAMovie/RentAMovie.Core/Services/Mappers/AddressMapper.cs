@@ -1,4 +1,4 @@
-using RentAMovie.Contract.AddressDto;
+using RentAMovie.Contract.Dto;
 using RentAMovie.Infrastructure.Model;
 
 namespace RentAMovie.Core.Services.Mappers
@@ -9,6 +9,7 @@ namespace RentAMovie.Core.Services.Mappers
         {
             return new AddressDto()
             {
+                Id = address.Id,
                 Street = address.Street,
                 City = address.City,
                 ZipCode = address.ZipCode
@@ -19,6 +20,7 @@ namespace RentAMovie.Core.Services.Mappers
         {
             return new Address()
             {
+                Id = address.Id,
                 Street = address.Street,
                 City = address.City,
                 ZipCode = address.ZipCode

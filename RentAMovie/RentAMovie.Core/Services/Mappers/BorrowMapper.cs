@@ -1,4 +1,4 @@
-using RentAMovie.Contract.BorrowDto;
+using RentAMovie.Contract.Dto;
 using RentAMovie.Infrastructure.Model;
 
 namespace RentAMovie.Core.Services.Mappers
@@ -9,11 +9,9 @@ namespace RentAMovie.Core.Services.Mappers
         {
             return new BorrowDto()
             {
+                Id = borrow.Id,
                 DateOfBorrow = borrow.DateOfBorrow,
-                DateOfReturn = borrow.DateOfReturn,
-                NumberOfDays = borrow.NumberOfDays
-                //ClientId = borrow.Client.Id,
-                //MovieId = borrow.Movie.Id
+                DateOfReturn = borrow.DateOfReturn
             };
         }
 
@@ -21,17 +19,9 @@ namespace RentAMovie.Core.Services.Mappers
         {
             return new Borrow()
             {
+                Id = borrow.Id,
                 DateOfBorrow = borrow.DateOfBorrow,
-                DateOfReturn = borrow.DateOfReturn,
-                NumberOfDays = borrow.NumberOfDays
-                //Client = new Client()
-                //{
-                //    Id = borrow.ClientId
-                //},
-                //Movie = new Movie()
-                //{
-                //    Id = borrow.MovieId
-                //}
+                DateOfReturn = borrow.DateOfReturn
             };
         }
     }

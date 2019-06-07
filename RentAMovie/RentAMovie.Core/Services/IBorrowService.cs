@@ -1,4 +1,4 @@
-using RentAMovie.Contract.BorrowDto;
+using RentAMovie.Contract.Dto;
 
 namespace RentAMovie.Core.Services
 {

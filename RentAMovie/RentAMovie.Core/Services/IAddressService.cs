@@ -1,4 +1,4 @@
-using RentAMovie.Contract.AddressDto;
+using RentAMovie.Contract.Dto;
 
 namespace RentAMovie.Core.Services
 {

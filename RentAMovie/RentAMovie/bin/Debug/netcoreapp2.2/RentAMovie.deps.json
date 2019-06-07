@@ -28,6 +28,7 @@
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.EntityFrameworkCore": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
+          "RentAMovie.Core": "1.0.0",
           "RentAMovie.Infrastructure": "1.0.0"
         },
         "runtime": {
@@ -361,6 +362,26 @@
         },
         "compile": {
           "lib/netstandard1.1/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        }
+      },
+      "RentAMovie.Contract/1.0.0": {
+        "runtime": {
+          "RentAMovie.Contract.dll": {}
+        },
+        "compile": {
+          "RentAMovie.Contract.dll": {}
+        }
+      },
+      "RentAMovie.Core/1.0.0": {
+        "dependencies": {
+          "RentAMovie.Contract": "1.0.0",
+          "RentAMovie.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "RentAMovie.Core.dll": {}
+        },
+        "compile": {
+          "RentAMovie.Core.dll": {}
         }
       },
       "RentAMovie.Infrastructure/1.0.0": {
@@ -3508,6 +3529,16 @@
       "sha512": "sha512-fvDbTA/2+A3sfLlXYXOHKIFP/ZcL8yQJnr+VxwyCy2BPK2jLZg3XXStc1AokU5uC+dCDl5k3bpCiBdqYU1bz6g==",
       "path": "sqlitepclraw.provider.e_sqlite3.netstandard11/1.1.11",
       "hashPath": "sqlitepclraw.provider.e_sqlite3.netstandard11.1.1.11.nupkg.sha512"
+    },
+    "RentAMovie.Contract/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RentAMovie.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "RentAMovie.Infrastructure/1.0.0": {
       "type": "project",

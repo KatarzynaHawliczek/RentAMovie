@@ -20,8 +20,8 @@ namespace RentAMovie.Infrastructure.Logic
         public async Task<IEnumerable<Movie>> GetAll()
         {
             var movies = await _movieContext.Movie.ToListAsync();
-            movies.ForEach(x => { _movieContext.Entry(x).Reference(y => y.Client).LoadAsync(); });
-            movies.ForEach(x => { _movieContext.Entry(x).Reference(y => y.Borrow).LoadAsync(); });
+            //movies.ForEach(x => { _movieContext.Entry(x).Reference(y => y.Client).LoadAsync(); });
+            movies.ForEach(x => { _movieContext.Entry(x).Reference(y => y.Borrows).LoadAsync(); });
             return movies;
         }
 
@@ -30,8 +30,14 @@ namespace RentAMovie.Infrastructure.Logic
             var movie = await _movieContext.Movie
                 .Where(x => x.Id == id)
                 .SingleOrDefaultAsync();
-            await _movieContext.Entry(movie).Reference(x => x.Client).LoadAsync();
-            await _movieContext.Entry(movie).Reference(x => x.Borrow).LoadAsync();
+            try
+            {
+                await _movieContext.Entry(movie).Reference(x => x.Borrows).LoadAsync();
+            }
+            catch (ArgumentException e)
+            {
+                return null;
+            }
             return movie;
         }
 
@@ -39,8 +45,7 @@ namespace RentAMovie.Infrastructure.Logic
         {
             movie.DateOfCreation = DateTime.Now;
             await _movieContext.Movie
-                .Include(x => x.Client)
-                .Include(x => x.Borrow)
+                .Include(x => x.Borrows)
                 .FirstAsync();
             await _movieContext.Movie.AddAsync(movie);
             await _movieContext.SaveChangesAsync();
@@ -49,8 +54,7 @@ namespace RentAMovie.Infrastructure.Logic
         public async Task Update(Movie entity)
         {
             var movieToUpdate = await _movieContext.Movie
-                .Include(x => x.Client)
-                .Include(x => x.Borrow)
+                .Include(x => x.Borrows)
                 .SingleOrDefaultAsync(x => x.Id == entity.Id);
 
             if (movieToUpdate != null)
@@ -60,23 +64,24 @@ namespace RentAMovie.Infrastructure.Logic
                 movieToUpdate.Genre = entity.Genre;
                 movieToUpdate.ReleaseDate = entity.ReleaseDate;
                 movieToUpdate.Price = entity.Price;
-                movieToUpdate.Image = entity.Image;
                 movieToUpdate.Country = entity.Country;
                 movieToUpdate.IsRented = entity.IsRented;
-                movieToUpdate.Client = entity.Client;
-                movieToUpdate.Borrow = entity.Borrow;
+                movieToUpdate.Borrows = entity.Borrows;
                 movieToUpdate.DateOfUpdate = DateTime.Now;
 
-                if (entity.Client != null && movieToUpdate.Client != null)
+                if (entity.Borrows != null && movieToUpdate.Borrows != null)
                 {
-                    entity.Client.Id = movieToUpdate.Client.Id;
-                    _movieContext.Entry(movieToUpdate.Client).CurrentValues.SetValues(entity.Client);
-                }
-
-                if (entity.Borrow != null && movieToUpdate.Borrow != null)
-                {
-                    entity.Borrow.Id = movieToUpdate.Borrow.Id;
-                    _movieContext.Entry(movieToUpdate.Borrow).CurrentValues.SetValues(entity.Borrow);
+                    var borrowsToUpdate = movieToUpdate.Borrows.ToList();
+                    foreach (var borrow in borrowsToUpdate)
+                    {
+                        foreach (var entityBorrow in entity.Borrows)
+                        {
+                            if (borrow.Id == entityBorrow.Id)
+                            {
+                                _movieContext.Entry(borrowsToUpdate).CurrentValues.SetValues(entity.Borrows);
+                            }
+                        }
+                    }
                 }
 
                 await _movieContext.SaveChangesAsync();

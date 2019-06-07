@@ -1,4 +1,4 @@
-using RentAMovie.Contract.MovieDto;
+using RentAMovie.Contract.Dto;
 using RentAMovie.Infrastructure.Model;
 
 namespace RentAMovie.Core.Services.Mappers
@@ -9,16 +9,14 @@ namespace RentAMovie.Core.Services.Mappers
         {
             return new MovieDto()
             {
+                Id = movie.Id,
                 Title = movie.Title,
                 Director = movie.Director,
                 Genre = movie.Genre,
                 ReleaseDate = movie.ReleaseDate,
                 Price = movie.Price,
-                Image = movie.Image,
                 Country = movie.Country,
                 IsRented = movie.IsRented
-                //ClientId = movie.Client.Id,
-                //BorrowId = movie.Borrow.Id
             };
         }
 
@@ -26,22 +24,14 @@ namespace RentAMovie.Core.Services.Mappers
         {
             return new Movie()
             {
+                Id = movie.Id,
                 Title = movie.Title,
                 Director = movie.Director,
                 Genre = movie.Genre,
                 ReleaseDate = movie.ReleaseDate,
                 Price = movie.Price,
-                Image = movie.Image,
                 Country = movie.Country,
                 IsRented = movie.IsRented
-                //Client = new Client()
-                //{
-                //    Id = movie.ClientId
-                //},
-                //Borrow = new Borrow()
-                //{
-                //    Id = movie.BorrowId
-                //}
             };
         }
     }

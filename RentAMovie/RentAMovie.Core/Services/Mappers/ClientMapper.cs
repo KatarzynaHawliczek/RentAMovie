@@ -1,4 +1,4 @@
-using RentAMovie.Contract.ClientDto;
+using RentAMovie.Contract.Dto;
 using RentAMovie.Infrastructure.Model;
 
 namespace RentAMovie.Core.Services.Mappers
@@ -9,6 +9,7 @@ namespace RentAMovie.Core.Services.Mappers
         {
             return new ClientDto()
             {
+                Id = client.Id,
                 FirstName = client.FirstName,
                 LastName = client.LastName,
                 Email = client.Email,
@@ -16,7 +17,6 @@ namespace RentAMovie.Core.Services.Mappers
                 Street = client.Address.Street,
                 City = client.Address.ZipCode,
                 ZipCode = client.Address.ZipCode
-                //BorrowId = client.Borrow.Id
             };
         }
 
@@ -24,6 +24,8 @@ namespace RentAMovie.Core.Services.Mappers
         {
             return new Client()
             {
+                
+                Id = client.Id,
                 FirstName = client.FirstName,
                 LastName = client.LastName,
                 Email = client.Email,
@@ -34,10 +36,6 @@ namespace RentAMovie.Core.Services.Mappers
                     City = client.City,
                     ZipCode = client.ZipCode
                 }
-                //Borrow = new Borrow()
-                //{
-                //    Id = client.BorrowId
-                //}
             };
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using Microsoft.EntityFrameworkCore;
 using RentAMovie.Infrastructure.Model;
 
@@ -23,17 +24,21 @@ namespace RentAMovie.Infrastructure.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Movie>()
+                .HasMany(x => x.Borrows)
+                .WithOne(y => y.Movie)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Borrow>()
                 .HasOne(x => x.Client)
-                .WithMany(y => y.Movies)
+                .WithMany(y => y.Borrows)
                 .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Borrow>()
                 .HasOne(x => x.Movie)
-                .WithOne(y => y.Borrow)
-                .HasForeignKey<Movie>(z => z.Id);
-            modelBuilder.Entity<Borrow>()
-                .HasOne(x => x.Client)
-                .WithOne(y => y.Borrow)
-                .HasForeignKey<Client>(z => z.Id);
+                .WithMany(y => y.Borrows)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Client>()
+                .HasMany(x => x.Borrows)
+                .WithOne(y => y.Client)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

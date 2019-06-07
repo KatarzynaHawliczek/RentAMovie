@@ -1,8 +1,8 @@
 using System;
 
-namespace RentAMovie.Contract.MovieDto
+namespace RentAMovie.Contract.Dto
 {
-    public class MovieDto
+    public class MovieDto : BaseDto
     {
         public string Title { get; set; }
         public string Director { get; set; }
@@ -12,7 +12,5 @@ namespace RentAMovie.Contract.MovieDto
         public byte[] Image { get; set; }
         public string Country { get; set; }
         public bool IsRented { get; set; }
-        //public long ClientId { get; set; }
-        //public long BorrowId { get; set; }
     }
 }

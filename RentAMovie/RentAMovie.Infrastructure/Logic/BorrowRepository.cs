@@ -30,8 +30,15 @@ namespace RentAMovie.Infrastructure.Logic
             var borrow = await _movieContext.Borrow
                 .Where(x => x.Id == id)
                 .SingleOrDefaultAsync();
-            await _movieContext.Entry(borrow).Reference(x => x.Client).LoadAsync();
-            await _movieContext.Entry(borrow).Reference(x => x.Movie).LoadAsync();
+            try
+            {
+                await _movieContext.Entry(borrow).Reference(x => x.Client).LoadAsync();
+                await _movieContext.Entry(borrow).Reference(x => x.Movie).LoadAsync();
+            }
+            catch (ArgumentException e)
+            {
+                return null;
+            }
             return borrow;
         }
 
@@ -57,7 +64,7 @@ namespace RentAMovie.Infrastructure.Logic
             {
                 borrowToUpdate.DateOfBorrow = entity.DateOfBorrow;
                 borrowToUpdate.DateOfReturn = entity.DateOfReturn;
-                borrowToUpdate.NumberOfDays = entity.NumberOfDays;
+                //borrowToUpdate.NumberOfDays = entity.NumberOfDays;
                 borrowToUpdate.Client = entity.Client;
                 borrowToUpdate.Movie = entity.Movie;
 

@@ -1,6 +1,6 @@
-namespace RentAMovie.Contract.AddressDto
+namespace RentAMovie.Contract.Dto
 {
-    public class AddressDto
+    public class AddressDto : BaseDto
     {
         public string Street { get; set; }
         public string City { get; set; }

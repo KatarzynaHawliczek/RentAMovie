@@ -15,3 +15,7 @@ D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie\obj\Debug\netcoreapp2.2\RentAM
 D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie\obj\Debug\netcoreapp2.2\RentAMovie.csproj.CopyComplete
 D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie\obj\Debug\netcoreapp2.2\RentAMovie.dll
 D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie\obj\Debug\netcoreapp2.2\RentAMovie.pdb
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie\bin\Debug\netcoreapp2.2\RentAMovie.Contract.dll
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie\bin\Debug\netcoreapp2.2\RentAMovie.Core.dll
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie\bin\Debug\netcoreapp2.2\RentAMovie.Core.pdb
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie\bin\Debug\netcoreapp2.2\RentAMovie.Contract.pdb

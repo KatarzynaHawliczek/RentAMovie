@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace RentAMovie.Infrastructure.Model
 {
@@ -9,10 +10,8 @@ namespace RentAMovie.Infrastructure.Model
         public string Genre { get; set; }
         public DateTime ReleaseDate { get; set; }
         public decimal Price { get; set; }
-        public byte[] Image { get; set; }
         public string Country { get; set; }
         public bool IsRented { get; set; }
-        public Client Client { get; set; }
-        public Borrow Borrow { get; set; }
+        public IEnumerable<Borrow> Borrows { get; set; }
     }
 }

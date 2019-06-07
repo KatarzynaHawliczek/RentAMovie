@@ -6,7 +6,6 @@ namespace RentAMovie.Infrastructure.Model
     {
         public DateTime DateOfBorrow { get; set; }
         public DateTime DateOfReturn { get; set; }
-        public long NumberOfDays { get; set; }
         public Client Client { get; set; }
         public Movie Movie { get; set; }
     }

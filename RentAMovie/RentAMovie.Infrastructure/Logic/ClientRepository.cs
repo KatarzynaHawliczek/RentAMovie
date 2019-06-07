@@ -21,8 +21,7 @@ namespace RentAMovie.Infrastructure.Logic
         {
             var clients = await _movieContext.Client.ToListAsync();
             clients.ForEach(x => { _movieContext.Entry(x).Reference(y => y.Address).LoadAsync(); });
-            clients.ForEach(x => { _movieContext.Entry(x).Reference(y => y.Borrow).LoadAsync(); });
-            clients.ForEach(x => { _movieContext.Entry(x).Reference(y => y.Movies).LoadAsync(); });
+            clients.ForEach(x => { _movieContext.Entry(x).Reference(y => y.Borrows).LoadAsync(); });
             return clients;
         }
 
@@ -31,9 +30,15 @@ namespace RentAMovie.Infrastructure.Logic
             var client = await _movieContext.Client
                 .Where(x => x.Id == id)
                 .SingleOrDefaultAsync();
-            await _movieContext.Entry(client).Reference(x => x.Address).LoadAsync();
-            await _movieContext.Entry(client).Reference(x => x.Borrow).LoadAsync();
-            await _movieContext.Entry(client).Reference(x => x.Movies).LoadAsync();
+            try
+            {
+                await _movieContext.Entry(client).Reference(x => x.Address).LoadAsync();
+                await _movieContext.Entry(client).Reference(x => x.Borrows).LoadAsync();
+            }
+            catch(ArgumentException e)
+            {
+                return null;
+            }
             return client;
         }
 
@@ -42,8 +47,7 @@ namespace RentAMovie.Infrastructure.Logic
             client.DateOfCreation = DateTime.Now;
             await _movieContext.Client
                 .Include(x => x.Address)
-                .Include(x => x.Borrow)
-                .Include(x => x.Movies)
+                .Include(x => x.Borrows)
                 .FirstAsync();
             await _movieContext.Client.AddAsync(client);
             await _movieContext.SaveChangesAsync();
@@ -53,8 +57,7 @@ namespace RentAMovie.Infrastructure.Logic
         {
             var clientToUpdate = await _movieContext.Client
                 .Include(x => x.Address)
-                .Include(x => x.Borrow)
-                .Include(x => x.Movies)
+                .Include(x => x.Borrows)
                 .SingleOrDefaultAsync(x => x.Id == entity.Id);
 
             if (clientToUpdate != null)
@@ -64,8 +67,7 @@ namespace RentAMovie.Infrastructure.Logic
                 clientToUpdate.Email = entity.Email;
                 clientToUpdate.PhoneNumber = entity.PhoneNumber;
                 clientToUpdate.Address = entity.Address;
-                clientToUpdate.Borrow = entity.Borrow;
-                clientToUpdate.Movies = entity.Movies;
+                clientToUpdate.Borrows = entity.Borrows;
 
                 if (entity.Address != null && clientToUpdate.Address != null)
                 {
@@ -73,22 +75,16 @@ namespace RentAMovie.Infrastructure.Logic
                     _movieContext.Entry(clientToUpdate.Address).CurrentValues.SetValues(entity.Address);
                 }
 
-                if (entity.Borrow != null && clientToUpdate.Borrow != null)
+                if (entity.Borrows != null && clientToUpdate.Borrows != null)
                 {
-                    entity.Borrow.Id = clientToUpdate.Borrow.Id;
-                    _movieContext.Entry(clientToUpdate.Borrow).CurrentValues.SetValues(entity.Borrow);
-                }
-
-                if (entity.Movies != null && clientToUpdate.Movies != null)
-                {
-                    var moviesToUpdate = clientToUpdate.Movies.ToList();
-                    foreach (var movie in moviesToUpdate)
+                    var borrowsToUpdate = clientToUpdate.Borrows.ToList();
+                    foreach (var borrow in borrowsToUpdate)
                     {
-                        foreach (var entityMovie in entity.Movies)
+                        foreach (var entityBorrow in entity.Borrows)
                         {
-                            if (movie.Id == entityMovie.Id)
+                            if (borrow.Id == entityBorrow.Id)
                             {
-                                _movieContext.Entry(moviesToUpdate).CurrentValues.SetValues(entity.Movies);
+                                _movieContext.Entry(borrowsToUpdate).CurrentValues.SetValues(entity.Borrows);
                             }
                         }
                     }
