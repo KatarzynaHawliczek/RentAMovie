@@ -27,7 +27,7 @@ namespace RentAMovie.Controllers
             }
             catch (NullReferenceException e)
             {
-                return NotFound($"Can't found movie with id = {id}");
+                return NotFound($"Can't find movie with id = {id}");
             }
         }
 
