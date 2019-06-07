@@ -1,0 +1,14 @@
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie.Core\bin\Debug\netcoreapp2.2\RentAMovie.Core.deps.json
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie.Core\bin\Debug\netcoreapp2.2\RentAMovie.Core.dll
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie.Core\bin\Debug\netcoreapp2.2\RentAMovie.Core.pdb
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie.Core\bin\Debug\netcoreapp2.2\RentAMovie.Contract.dll
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie.Core\bin\Debug\netcoreapp2.2\RentAMovie.Infrastructure.dll
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie.Core\bin\Debug\netcoreapp2.2\RentAMovie.Contract.pdb
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie.Core\bin\Debug\netcoreapp2.2\RentAMovie.Infrastructure.pdb
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie.Core\obj\Debug\netcoreapp2.2\RentAMovie.Core.csprojAssemblyReference.cache
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie.Core\obj\Debug\netcoreapp2.2\RentAMovie.Core.csproj.CoreCompileInputs.cache
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie.Core\obj\Debug\netcoreapp2.2\RentAMovie.Core.AssemblyInfoInputs.cache
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie.Core\obj\Debug\netcoreapp2.2\RentAMovie.Core.AssemblyInfo.cs
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie.Core\obj\Debug\netcoreapp2.2\RentAMovie.Core.csproj.CopyComplete
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie.Core\obj\Debug\netcoreapp2.2\RentAMovie.Core.dll
+D:\Notatki\Semestr6\DOT\RAM\RentAMovie\RentAMovie.Core\obj\Debug\netcoreapp2.2\RentAMovie.Core.pdb
