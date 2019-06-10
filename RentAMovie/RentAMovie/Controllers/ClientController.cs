@@ -27,7 +27,21 @@ namespace RentAMovie.Controllers
             }
             catch (NullReferenceException e)
             {
-                return NotFound($"Can't find client with id = {id}");
+                return NotFound($"Client with id = {id} not found.");
+            }
+        }
+        
+        [HttpGet("GetClientByLastName/{lastName}")]
+        public async Task<IActionResult> GetClientBySurname(string lastName)
+        {
+            try
+            {
+                var client = await _clientService.GetByLastName(lastName);
+                return Ok(client);
+            }
+            catch (NullReferenceException e)
+            {
+                return NotFound($"Client with lastName = {lastName} not found.");
             }
         }
 
@@ -47,7 +61,7 @@ namespace RentAMovie.Controllers
             }
 
             await _clientService.Add(client);
-            return Created("Created new client", client);
+            return Created("Created new client.", client);
         }
 
         [HttpPut("UpdateClient")]
@@ -59,14 +73,14 @@ namespace RentAMovie.Controllers
             }
 
             await _clientService.Update(client);
-            return Ok($"Updated client with id = {client.Id}");
+            return Ok($"Client with id = {client.Id} updated.");
         }
 
         [HttpDelete("DeleteClient/{id}")]
         public async Task<IActionResult> DeleteClient(long id)
         {
             await _clientService.Delete(id);
-            return Ok($"Movie with id = {id} deleted");
+            return Ok($"Movie with id = {id} deleted.");
         }
     }
 }

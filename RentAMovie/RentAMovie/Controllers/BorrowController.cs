@@ -27,7 +27,7 @@ namespace RentAMovie.Controllers
             }
             catch (NullReferenceException e)
             {
-                return NotFound($"Can't find borrow with id = {id}");
+                return NotFound($"Borrow with id = {id} not found.");
             }
         }
 
@@ -47,7 +47,7 @@ namespace RentAMovie.Controllers
             }
 
             await _borrowService.Add(borrow);
-            return Created("Created new borrow", borrow);
+            return Created("Created new borrow.", borrow);
         }
 
         [HttpPut("UpdateBorrow")]
@@ -59,14 +59,14 @@ namespace RentAMovie.Controllers
             }
 
             await _borrowService.Update(borrow);
-            return Ok($"Updated borrow with id = {borrow.Id}");
+            return Ok($"Borrow with id = {borrow.Id} updated.");
         }
 
         [HttpDelete("DeleteBorrow/{id}")]
         public async Task<IActionResult> DeleteBorrow(long id)
         {
             await _borrowService.Delete(id);
-            return Ok($"Borrow with id = {id} deleted");
+            return Ok($"Borrow with id = {id} deleted.");
         }
     }
 }

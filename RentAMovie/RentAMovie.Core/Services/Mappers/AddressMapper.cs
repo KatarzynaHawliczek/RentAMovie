@@ -20,7 +20,7 @@ namespace RentAMovie.Core.Services.Mappers
         {
             return new Address()
             {
-                Id = address.Id,
+                Id = address.Id.GetValueOrDefault(),
                 Street = address.Street,
                 City = address.City,
                 ZipCode = address.ZipCode

@@ -11,7 +11,9 @@ namespace RentAMovie.Core.Services.Mappers
             {
                 Id = borrow.Id,
                 DateOfBorrow = borrow.DateOfBorrow,
-                DateOfReturn = borrow.DateOfReturn
+                DateOfReturn = borrow.DateOfReturn,
+                ClientId = borrow.Client?.Id,
+                MovieId = borrow.Movie?.Id
             };
         }
 
@@ -19,9 +21,9 @@ namespace RentAMovie.Core.Services.Mappers
         {
             return new Borrow()
             {
-                Id = borrow.Id,
-                DateOfBorrow = borrow.DateOfBorrow,
-                DateOfReturn = borrow.DateOfReturn
+                Id = borrow.Id.GetValueOrDefault(),
+                DateOfBorrow = borrow.DateOfBorrow.GetValueOrDefault(),
+                DateOfReturn = borrow.DateOfReturn.GetValueOrDefault()
             };
         }
     }

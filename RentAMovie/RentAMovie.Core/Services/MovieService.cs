@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RentAMovie.Contract.Dto;
 using RentAMovie.Core.Services.Mappers;
 using RentAMovie.Infrastructure.Logic;
+using RentAMovie.Infrastructure.Model;
 
 namespace RentAMovie.Core.Services
 {
@@ -28,6 +30,30 @@ namespace RentAMovie.Core.Services
         {
             var movie = await _iMovieRepository.GetById(id);
             return MovieMapper.MapMovieToDto(movie);
+        }
+        
+        public async Task<IEnumerable<MovieDto>> GetByTitle(string title)
+        {
+            var movies = await _iMovieRepository.GetByTitle(title);
+            return movies
+                .Select(MovieMapper.MapMovieToDto)
+                .ToList();
+        }
+
+        public async Task<IEnumerable<MovieDto>> GetByGenre(string genre)
+        {
+            var movies = await _iMovieRepository.GetByGenre(genre);
+            return movies
+                .Select(MovieMapper.MapMovieToDto)
+                .ToList();
+        }
+
+        public async Task<IEnumerable<MovieDto>> GetByReleaseDate(DateTime releaseDate)
+        {
+            var movies = await _iMovieRepository.GetByReleaseDate(releaseDate);
+            return movies
+                .Select(MovieMapper.MapMovieToDto)
+                .ToList();
         }
 
         public async Task Add(MovieDto movie)

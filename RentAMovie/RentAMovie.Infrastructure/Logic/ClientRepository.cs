@@ -20,8 +20,8 @@ namespace RentAMovie.Infrastructure.Logic
         public async Task<IEnumerable<Client>> GetAll()
         {
             var clients = await _movieContext.Client.ToListAsync();
-            clients.ForEach(x => { _movieContext.Entry(x).Reference(y => y.Address).LoadAsync(); });
-            clients.ForEach(x => { _movieContext.Entry(x).Reference(y => y.Borrows).LoadAsync(); });
+            //clients.ForEach(x => { _movieContext.Entry(x).Reference(y => y.Address).LoadAsync(); });
+            //clients.ForEach(x => { _movieContext.Entry(x).Reference(y => y.Borrows).LoadAsync(); });
             return clients;
         }
 
@@ -30,25 +30,36 @@ namespace RentAMovie.Infrastructure.Logic
             var client = await _movieContext.Client
                 .Where(x => x.Id == id)
                 .SingleOrDefaultAsync();
-            try
-            {
-                await _movieContext.Entry(client).Reference(x => x.Address).LoadAsync();
-                await _movieContext.Entry(client).Reference(x => x.Borrows).LoadAsync();
-            }
-            catch(ArgumentException e)
-            {
-                return null;
-            }
+            //try
+            //{
+            //    await _movieContext.Entry(client).Reference(x => x.Address).LoadAsync();
+            //    await _movieContext.Entry(client).Reference(x => x.Borrows).LoadAsync();
+            //}
+            //catch(ArgumentException e)
+            //{
+            //    return null;
+            //}
+            return client;
+        }
+
+        public async Task<Client> GetByLastName(string lastName)
+        {
+            var client = await _movieContext.Client
+                .Where(x => x.LastName == lastName)
+                .SingleOrDefaultAsync();
+            
+            await _movieContext.Entry(client).Reference(x => x.Borrows).LoadAsync();
             return client;
         }
 
         public async Task Add(Client client)
         {
             client.DateOfCreation = DateTime.Now;
-            await _movieContext.Client
-                .Include(x => x.Address)
-                .Include(x => x.Borrows)
-                .FirstAsync();
+            //await _movieContext.Client
+            //    .Include(x => x.Address)
+            //    .Include(x => x.Borrows)
+            //    .FirstAsync();
+            client.Id = null;
             await _movieContext.Client.AddAsync(client);
             await _movieContext.SaveChangesAsync();
         }
@@ -66,7 +77,7 @@ namespace RentAMovie.Infrastructure.Logic
                 clientToUpdate.LastName = entity.LastName;
                 clientToUpdate.Email = entity.Email;
                 clientToUpdate.PhoneNumber = entity.PhoneNumber;
-                clientToUpdate.Address = entity.Address;
+                /*clientToUpdate.Address = entity.Address;
                 clientToUpdate.Borrows = entity.Borrows;
 
                 if (entity.Address != null && clientToUpdate.Address != null)
@@ -88,7 +99,7 @@ namespace RentAMovie.Infrastructure.Logic
                             }
                         }
                     }
-                }
+                }*/
 
                 await _movieContext.SaveChangesAsync();
             }

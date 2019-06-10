@@ -17,7 +17,7 @@ namespace RentAMovie.Controllers
             _movieService = movieService;
         }
 
-        [HttpGet("GetMovie/{Id}")]
+        [HttpGet("GetMovie/{id}")]
         public async Task<IActionResult> GetMovieById(long id)
         {
             try
@@ -27,7 +27,49 @@ namespace RentAMovie.Controllers
             }
             catch (NullReferenceException e)
             {
-                return NotFound($"Can't find movie with id = {id}");
+                return NotFound($"Movie with id = {id} not found.");
+            }
+        }
+        
+        [HttpGet("GetMovieByTitle/{title}")]
+        public async Task<IActionResult> GetMovieByTitle(string title)
+        {
+            try
+            {
+                var movie = await _movieService.GetByTitle(title);
+                return Ok(movie);
+            }
+            catch (NullReferenceException e)
+            {
+                return NotFound($"Movie with title = {title} not found.");
+            }
+        }
+        
+        [HttpGet("GetMovieByGenre/{genre}")]
+        public async Task<IActionResult> GetMovieById(string genre)
+        {
+            try
+            {
+                var movie = await _movieService.GetByGenre(genre);
+                return Ok(movie);
+            }
+            catch (NullReferenceException e)
+            {
+                return NotFound($"Movie with genre = {genre} not found.");
+            }
+        }
+        
+        [HttpGet("GetMovieByReleaseDate/{releaseDate}")]
+        public async Task<IActionResult> GetMovieByReleaseDate(DateTime releaseDate)
+        {
+            try
+            {
+                var movie = await _movieService.GetByReleaseDate(releaseDate);
+                return Ok(movie);
+            }
+            catch (NullReferenceException e)
+            {
+                return NotFound($"Movie with releaseDate = {releaseDate} not found.");
             }
         }
 
@@ -47,7 +89,7 @@ namespace RentAMovie.Controllers
             }
 
             await _movieService.Add(movie);
-            return Created("Created new movie", movie);
+            return Created("Created new movie.", movie);
         }
 
         [HttpPut("UpdateMovie")]
@@ -59,14 +101,14 @@ namespace RentAMovie.Controllers
             }
 
             await _movieService.Update(movie);
-            return Ok($"Updated movie with id = {movie.Id}");
+            return Ok($"Movie with id = {movie.Id} updated.");
         }
 
         [HttpDelete("DeleteMovie/{id}")]
         public async Task<IActionResult> DeleteMovie(long id)
         {
             await _movieService.Delete(id);
-            return Ok($"Movie with id = {id} deleted");
+            return Ok($"Movie with id = {id} deleted.");
         }
     }
 }

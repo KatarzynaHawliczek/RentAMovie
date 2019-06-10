@@ -27,7 +27,7 @@ namespace RentAMovie.Controllers
             }
             catch (NullReferenceException e)
             {
-                return NotFound($"Can't find address with id = {id}");
+                return NotFound($"Address with id = {id} not found.");
             }
         }
 
@@ -47,7 +47,7 @@ namespace RentAMovie.Controllers
             }
 
             await _addressService.Add(address);
-            return Created("Created new address", address);
+            return Created("Created new address.", address);
         }
 
         [HttpPut("UpdateAddress")]
@@ -59,14 +59,14 @@ namespace RentAMovie.Controllers
             }
 
             await _addressService.Update(address);
-            return Ok($"Updated address with id = {address.Id}");
+            return Ok($"Address with id = {address.Id} updated.");
         }
 
         [HttpDelete("DeleteAddress/{id}")]
         public async Task<IActionResult> DeleteAddress(long id)
         {
             await _addressService.Delete(id);
-            return Ok($"Address with id = {id} deleted");
+            return Ok($"Address with id = {id} deleted.");
         }
     }
 }

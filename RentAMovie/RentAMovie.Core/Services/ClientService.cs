@@ -29,6 +29,12 @@ namespace RentAMovie.Core.Services
             var client = await _iClientRepository.GetById(id);
             return ClientMapper.MapClientToDto(client);
         }
+        
+        public async Task<ClientDto> GetByLastName(string lastName)
+        {
+            var client = await _iClientRepository.GetByLastName(lastName);
+            return ClientMapper.MapClientToDto(client);
+        }
 
         public async Task Add(ClientDto client)
         {

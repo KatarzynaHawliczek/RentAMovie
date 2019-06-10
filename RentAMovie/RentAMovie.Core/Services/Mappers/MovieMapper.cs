@@ -24,14 +24,14 @@ namespace RentAMovie.Core.Services.Mappers
         {
             return new Movie()
             {
-                Id = movie.Id,
+                Id = movie.Id.GetValueOrDefault(),
                 Title = movie.Title,
                 Director = movie.Director,
                 Genre = movie.Genre,
-                ReleaseDate = movie.ReleaseDate,
-                Price = movie.Price,
+                ReleaseDate = movie.ReleaseDate.GetValueOrDefault(),
+                Price = movie.Price.GetValueOrDefault(),
                 Country = movie.Country,
-                IsRented = movie.IsRented
+                IsRented = movie.IsRented.GetValueOrDefault()
             };
         }
     }

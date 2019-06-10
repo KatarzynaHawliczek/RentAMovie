@@ -13,10 +13,7 @@ namespace RentAMovie.Core.Services.Mappers
                 FirstName = client.FirstName,
                 LastName = client.LastName,
                 Email = client.Email,
-                PhoneNumber = client.PhoneNumber,
-                Street = client.Address.Street,
-                City = client.Address.ZipCode,
-                ZipCode = client.Address.ZipCode
+                PhoneNumber = client.PhoneNumber
             };
         }
 
@@ -25,17 +22,11 @@ namespace RentAMovie.Core.Services.Mappers
             return new Client()
             {
                 
-                Id = client.Id,
+                Id = client.Id.GetValueOrDefault(),
                 FirstName = client.FirstName,
                 LastName = client.LastName,
                 Email = client.Email,
-                PhoneNumber = client.PhoneNumber,
-                Address = new Address()
-                {
-                    Street = client.Street,
-                    City = client.City,
-                    ZipCode = client.ZipCode
-                }
+                PhoneNumber = client.PhoneNumber
             };
         }
     }
