@@ -1,0 +1,80 @@
+MovieDto: 
+[
+{
+  "title": "Zielona mila",
+  "director": "Frank Darabont",
+  "genre": "Dramat",
+  "releaseDate": 1999,
+  "price": 5.0,
+  "country": "USA"
+},
+{
+  "title": "Skazani na Shawshank",
+  "director": "Frank Darabont",
+  "genre": "Dramat",
+  "releaseDate": 1994,
+  "price": 5.0,
+  "country": "USA"
+},
+{
+  "title": "Leon zawodowiec",
+  "director": "Luc Besson",
+  "genre": "Krymina³",
+  "releaseDate": 1994,
+  "price": 5.0,
+  "country": "Francja"
+},
+{
+  "title": "Matrix",
+  "director": "Jonathan Demme",
+  "genre": "Thriller",
+  "releaseDate": 2009,
+  "price": 7.5,
+  "country": "Wielka Brytania"
+},
+{
+  "title": "Dzieñ Swira",
+  "director": "Marek Koterski",
+  "genre": "Komedia",
+  "releaseDate": 2002,
+  "price": 5.0,
+  "country": "Polska"
+}
+]
+
+ClientDto
+[
+{
+  "firstName": "Kasia",
+  "lastName": "Nowak",
+  "email": "kasia@wp.pl",
+  "phoneNumber": "123456789"
+},
+{
+  "firstName": "Andrzej",
+  "lastName": "Kowalski",
+  "email": "andrzej@wp.pl",
+  "phoneNumber": "456789345"
+},
+{
+  "firstName": "Jan",
+  "lastName": "Nowak",
+  "email": "jan@wp.pl",
+  "phoneNumber": "543872543"
+}
+]
+
+BorrowDto
+[
+{
+  "clientId": 1,
+  "movieId": 1
+},
+{
+  "clientId": 1,
+  "movieId": 4
+},
+{
+  "clientId": 3,
+  "movieId": 5
+},
