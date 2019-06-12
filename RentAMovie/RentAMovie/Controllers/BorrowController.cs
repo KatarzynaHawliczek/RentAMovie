@@ -17,7 +17,14 @@ namespace RentAMovie.Controllers
             _borrowService = borrowService;
         }
 
-        [HttpGet("GetBorrow/{Id}")]
+        [HttpGet("GetAllBorrows")]
+        public async Task<IActionResult> GetAllBorrows()
+        {
+            var borrows = await _borrowService.GetAll();
+            return Ok(borrows);
+        }
+        
+        [HttpGet("GetBorrow/{id}")]
         public async Task<IActionResult> GetBorrowById(long id)
         {
             try
@@ -29,13 +36,6 @@ namespace RentAMovie.Controllers
             {
                 return NotFound($"Borrow with id = {id} not found.");
             }
-        }
-
-        [HttpGet("GetAllBorrows")]
-        public async Task<IActionResult> GetAllBorrows()
-        {
-            var borrows = await _borrowService.GetAll();
-            return Ok(borrows);
         }
 
         [HttpPost]

@@ -48,9 +48,33 @@ namespace RentAMovie.Core.Services
                 .ToList();
         }
 
-        public async Task<IEnumerable<MovieDto>> GetByReleaseDate(DateTime releaseDate)
+        public async Task<IEnumerable<MovieDto>> GetByReleaseDate(int releaseDate)
         {
             var movies = await _iMovieRepository.GetByReleaseDate(releaseDate);
+            return movies
+                .Select(MovieMapper.MapMovieToDto)
+                .ToList();
+        }
+
+        public async Task<IEnumerable<MovieDto>> GetRentedMovies()
+        {
+            var movies = await _iMovieRepository.GetRentedMovies();
+            return movies
+                .Select(MovieMapper.MapMovieToDto)
+                .ToList();
+        }
+
+        public async Task<IEnumerable<MovieDto>> SortByGenre()
+        {
+            var movies = await _iMovieRepository.SortByGenre();
+            return movies
+                .Select(MovieMapper.MapMovieToDto)
+                .ToList();
+        }
+
+        public async Task<IEnumerable<MovieDto>> SortByReleaseDate()
+        {
+            var movies = await _iMovieRepository.SortByReleaseDate();
             return movies
                 .Select(MovieMapper.MapMovieToDto)
                 .ToList();

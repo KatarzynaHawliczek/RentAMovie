@@ -7,7 +7,6 @@ namespace RentAMovie.Infrastructure.Context
     public class MovieContext : DbContext
     {
         public DbSet<Movie> Movie { get; set; }
-        public DbSet<Address> Address { get; set; }
         public DbSet<Borrow> Borrow { get; set; }
         public DbSet<Client> Client { get; set; }
         
@@ -25,20 +24,15 @@ namespace RentAMovie.Infrastructure.Context
         {
             modelBuilder.Entity<Movie>()
                 .HasMany(x => x.Borrows);
-                //.WithOne(y => y.Movie)
-                //.OnDelete(DeleteBehavior.Cascade);
-                modelBuilder.Entity<Borrow>()
-                    .HasOne(x => x.Client);
-                //.WithMany(y => y.Borrows)
-                //.OnDelete(DeleteBehavior.Cascade);
-                modelBuilder.Entity<Borrow>()
-                    .HasOne(x => x.Movie);
-                //.WithMany(y => y.Borrows)
-                //.OnDelete(DeleteBehavior.Cascade);
-                modelBuilder.Entity<Client>()
-                    .HasMany(x => x.Borrows);
-                //.WithOne(y => y.Client)
-                //.OnDelete(DeleteBehavior.Cascade);
+               
+            modelBuilder.Entity<Borrow>()
+                .HasOne(x => x.Client);
+               
+            modelBuilder.Entity<Borrow>()
+                .HasOne(x => x.Movie);
+                
+            modelBuilder.Entity<Client>()
+                .HasMany(x => x.Borrows);         
         }
     }
 }

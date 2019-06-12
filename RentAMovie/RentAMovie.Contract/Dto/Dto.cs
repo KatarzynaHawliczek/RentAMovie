@@ -1,6 +1,6 @@
 namespace RentAMovie.Contract.Dto
 {
-    public class BaseDto
+    public class Dto
     {
         public long? Id { get; set; }
     }

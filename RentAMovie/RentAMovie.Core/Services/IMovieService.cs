@@ -9,6 +9,9 @@ namespace RentAMovie.Core.Services
     {
         Task<IEnumerable<MovieDto>> GetByTitle(string title);
         Task<IEnumerable<MovieDto>> GetByGenre(string genre);
-        Task<IEnumerable<MovieDto>> GetByReleaseDate(DateTime releaseDate);
+        Task<IEnumerable<MovieDto>> GetByReleaseDate(int releaseDate);
+        Task<IEnumerable<MovieDto>> GetRentedMovies();
+        Task<IEnumerable<MovieDto>> SortByGenre();
+        Task<IEnumerable<MovieDto>> SortByReleaseDate();
     }
 }

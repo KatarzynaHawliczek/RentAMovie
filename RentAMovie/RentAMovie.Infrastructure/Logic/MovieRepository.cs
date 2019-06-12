@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Microsoft.EntityFrameworkCore;
 using RentAMovie.Infrastructure.Context;
 using RentAMovie.Infrastructure.Model;
@@ -20,7 +21,6 @@ namespace RentAMovie.Infrastructure.Logic
         public async Task<IEnumerable<Movie>> GetAll()
         {
             var movies = await _movieContext.Movie.ToListAsync();
-            //movies.ForEach(x => { _movieContext.Entry(x).Reference(y => y.Borrows).LoadAsync(); });
             return movies;
         }
 
@@ -29,14 +29,7 @@ namespace RentAMovie.Infrastructure.Logic
             var movie = await _movieContext.Movie
                 .Where(x => x.Id == id)
                 .SingleOrDefaultAsync();
-            //try
-            //{
-            //    await _movieContext.Entry(movie).Reference(x => x.Borrows).LoadAsync();
-            //}
-            //catch (ArgumentException e)
-            //{
-            //    return null;
-            //}
+            
             return movie;
         }
         
@@ -58,7 +51,7 @@ namespace RentAMovie.Infrastructure.Logic
             return movies;
         }
         
-        public async Task<IEnumerable<Movie>> GetByReleaseDate(DateTime releaseDate)
+        public async Task<IEnumerable<Movie>> GetByReleaseDate(int releaseDate)
         {
             var movies = await _movieContext.Movie
                 .Where(x => x.ReleaseDate == releaseDate)
@@ -67,13 +60,32 @@ namespace RentAMovie.Infrastructure.Logic
             return movies;
         }
 
+        public async Task<IEnumerable<Movie>> GetRentedMovies()
+        {
+            var movies = await _movieContext.Movie
+                .Where(x => x.IsRented)
+                .ToListAsync();
+
+            return movies;
+        }
+
+        public async Task<IEnumerable<Movie>> SortByGenre()
+        {
+            var movies = await _movieContext.Movie.OrderBy(x => x.Genre).ToListAsync();
+            return movies;
+        }
+
+        public async Task<IEnumerable<Movie>> SortByReleaseDate()
+        {
+            var movies = await _movieContext.Movie.OrderByDescending(x => x.ReleaseDate).ToListAsync();
+            return movies;
+        }
+
         public async Task Add(Movie movie)
         {
             movie.DateOfCreation = DateTime.Now;
-            //await _movieContext.Movie
-            //    .Include(x => x.Borrows)
-            //    .FirstAsync();
             movie.Id = null;
+            movie.IsRented = false;
             await _movieContext.Movie.AddAsync(movie);
             await _movieContext.SaveChangesAsync();
         }
@@ -81,7 +93,6 @@ namespace RentAMovie.Infrastructure.Logic
         public async Task Update(Movie entity)
         {
             var movieToUpdate = await _movieContext.Movie
-                //.Include(x => x.Borrows)
                 .SingleOrDefaultAsync(x => x.Id == entity.Id);
 
             if (movieToUpdate != null)
@@ -93,23 +104,7 @@ namespace RentAMovie.Infrastructure.Logic
                 movieToUpdate.Price = entity.Price;
                 movieToUpdate.Country = entity.Country;
                 movieToUpdate.IsRented = entity.IsRented;
-                //movieToUpdate.Borrows = entity.Borrows;
                 movieToUpdate.DateOfUpdate = DateTime.Now;
-
-                //if (entity.Borrows != null && movieToUpdate.Borrows != null)
-                //{
-                //   var borrowsToUpdate = movieToUpdate.Borrows.ToList();
-                //    foreach (var borrow in borrowsToUpdate)
-                //    {
-                //        foreach (var entityBorrow in entity.Borrows)
-                //        {
-                //            if (borrow.Id == entityBorrow.Id)
-                //            {
-                //                _movieContext.Entry(borrowsToUpdate).CurrentValues.SetValues(entity.Borrows);
-                //            }
-                //        }
-                //    }
-                //}
 
                 await _movieContext.SaveChangesAsync();
             }

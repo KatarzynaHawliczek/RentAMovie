@@ -17,7 +17,14 @@ namespace RentAMovie.Controllers
             _clientService = clientService;
         }
 
-        [HttpGet("GetClient/{Id}")]
+        [HttpGet("GetAllClients")]
+        public async Task<IActionResult> GetAllClients()
+        {
+            var clients = await _clientService.GetAll();
+            return Ok(clients);
+        }
+        
+        [HttpGet("GetClient/{id}")]
         public async Task<IActionResult> GetClientById(long id)
         {
             try
@@ -31,7 +38,7 @@ namespace RentAMovie.Controllers
             }
         }
         
-        [HttpGet("GetClientByLastName/{lastName}")]
+        [HttpGet("GetByLastName/{lastName}")]
         public async Task<IActionResult> GetClientBySurname(string lastName)
         {
             try
@@ -43,13 +50,6 @@ namespace RentAMovie.Controllers
             {
                 return NotFound($"Client with lastName = {lastName} not found.");
             }
-        }
-
-        [HttpGet("GetAllClients")]
-        public async Task<IActionResult> GetAllClients()
-        {
-            var clients = await _clientService.GetAll();
-            return Ok(clients);
         }
 
         [HttpPost]

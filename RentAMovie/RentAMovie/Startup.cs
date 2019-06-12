@@ -30,8 +30,8 @@ namespace RentAMovie
             services.AddScoped<IClientService, ClientService>();
             services.AddScoped<IBorrowRepository, BorrowRepository>();
             services.AddScoped<IBorrowService, BorrowService>();
-            services.AddScoped<IAddressRepository, AddressRepository>();
-            services.AddScoped<IAddressService, AddressService>();
+            //services.AddScoped<IAddressRepository, AddressRepository>();
+            //services.AddScoped<IAddressService, AddressService>();
             services.AddDbContext<MovieContext>(options =>
                 options.UseSqlite("DataSource=dbo.RentAMovieApi.db",
                     builder => builder.MigrationsAssembly("RentAMovie.Infrastructure")

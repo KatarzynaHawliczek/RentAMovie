@@ -45,10 +45,9 @@ namespace RentAMovie.Infrastructure.Logic
         public async Task Add(Borrow borrow)
         {
             borrow.DateOfCreation = DateTime.Now;
-            //await _movieContext.Borrow
-            //    .Include(x => x.Client)
-            //    .Include(x => x.Movie)
-            //    .FirstAsync();
+            borrow.DateOfBorrow = DateTime.Now;
+            borrow.Movie.IsRented = true;
+            borrow.Id = null;
             await _movieContext.Borrow.AddAsync(borrow);
             await _movieContext.SaveChangesAsync();
         }
@@ -64,21 +63,9 @@ namespace RentAMovie.Infrastructure.Logic
             {
                 borrowToUpdate.DateOfBorrow = entity.DateOfBorrow;
                 borrowToUpdate.DateOfReturn = entity.DateOfReturn;
-                //borrowToUpdate.NumberOfDays = entity.NumberOfDays;
                 borrowToUpdate.Client = entity.Client;
                 borrowToUpdate.Movie = entity.Movie;
-
-                //if (entity.Client != null && borrowToUpdate.Client != null)
-                //{
-                //    entity.Client.Id = borrowToUpdate.Client.Id;
-                //    _movieContext.Entry(borrowToUpdate.Client).CurrentValues.SetValues(entity.Client);
-                //}
-                //
-                //if (entity.Movie != null && borrowToUpdate.Movie != null)
-                //{
-                //    entity.Movie.Id = borrowToUpdate.Movie.Id;
-                //    _movieContext.Entry(borrowToUpdate.Movie).CurrentValues.SetValues(entity.Movie);
-                //}
+                borrowToUpdate.DateOfUpdate = DateTime.Now;
 
                 await _movieContext.SaveChangesAsync();
             }
@@ -86,9 +73,12 @@ namespace RentAMovie.Infrastructure.Logic
 
         public async Task Delete(long id)
         {
-            var borrowToDelete = await _movieContext.Borrow.SingleOrDefaultAsync(borrow => borrow.Id == id);
+            var borrowToDelete = await _movieContext.Borrow
+                .Include(x => x.Movie)
+                .SingleOrDefaultAsync(borrow => borrow.Id == id);
             if (borrowToDelete != null)
             {
+                borrowToDelete.Movie.IsRented = false;
                 _movieContext.Borrow.Remove(borrowToDelete);
                 await _movieContext.SaveChangesAsync();
             }

@@ -30,10 +30,12 @@ namespace RentAMovie.Core.Services
             return ClientMapper.MapClientToDto(client);
         }
         
-        public async Task<ClientDto> GetByLastName(string lastName)
+        public async Task<IEnumerable<ClientDto>> GetByLastName(string lastName)
         {
-            var client = await _iClientRepository.GetByLastName(lastName);
-            return ClientMapper.MapClientToDto(client);
+            var clients = await _iClientRepository.GetByLastName(lastName);
+            return clients
+                .Select(ClientMapper.MapClientToDto)
+                .ToList();
         }
 
         public async Task Add(ClientDto client)

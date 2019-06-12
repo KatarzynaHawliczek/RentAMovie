@@ -1,6 +1,6 @@
 namespace RentAMovie.Contract.Dto
 {
-    public class ClientDto : BaseDto
+    public class ClientDto : Dto
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

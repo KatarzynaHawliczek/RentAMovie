@@ -17,6 +17,13 @@ namespace RentAMovie.Controllers
             _movieService = movieService;
         }
 
+        [HttpGet("GetAllMovies")]
+        public async Task<IActionResult> GetAllMovies()
+        {
+            var movies = await _movieService.GetAll();
+            return Ok(movies);
+        }
+        
         [HttpGet("GetMovie/{id}")]
         public async Task<IActionResult> GetMovieById(long id)
         {
@@ -31,7 +38,7 @@ namespace RentAMovie.Controllers
             }
         }
         
-        [HttpGet("GetMovieByTitle/{title}")]
+        [HttpGet("GetByTitle/{title}")]
         public async Task<IActionResult> GetMovieByTitle(string title)
         {
             try
@@ -45,8 +52,8 @@ namespace RentAMovie.Controllers
             }
         }
         
-        [HttpGet("GetMovieByGenre/{genre}")]
-        public async Task<IActionResult> GetMovieById(string genre)
+        [HttpGet("GetByGenre/{genre}")]
+        public async Task<IActionResult> GetMovieByGenre(string genre)
         {
             try
             {
@@ -59,8 +66,8 @@ namespace RentAMovie.Controllers
             }
         }
         
-        [HttpGet("GetMovieByReleaseDate/{releaseDate}")]
-        public async Task<IActionResult> GetMovieByReleaseDate(DateTime releaseDate)
+        [HttpGet("GetByReleaseDate/{releaseDate}")]
+        public async Task<IActionResult> GetMovieByReleaseDate(int releaseDate)
         {
             try
             {
@@ -73,10 +80,24 @@ namespace RentAMovie.Controllers
             }
         }
 
-        [HttpGet("GetAllMovies")]
-        public async Task<IActionResult> GetAllMovies()
+        [HttpGet("GetRentedMovies")]
+        public async Task<IActionResult> GetRentedMovies()
         {
-            var movies = await _movieService.GetAll();
+            var movies = await _movieService.GetRentedMovies();
+            return Ok(movies);
+        }
+        
+        [HttpGet("SortByGenre")]
+        public async Task<IActionResult> SortMoviesByGenre()
+        {
+            var movies = await _movieService.SortByGenre();
+            return Ok(movies);
+        }
+        
+        [HttpGet("SortByReleaseDate")]
+        public async Task<IActionResult> SortMoviesByReleaseDate()
+        {
+            var movies = await _movieService.SortByReleaseDate();
             return Ok(movies);
         }
 

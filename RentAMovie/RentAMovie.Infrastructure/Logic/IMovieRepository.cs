@@ -9,6 +9,9 @@ namespace RentAMovie.Infrastructure.Logic
     {
         Task<IEnumerable<Movie>> GetByTitle(string title);
         Task<IEnumerable<Movie>> GetByGenre(string genre);
-        Task<IEnumerable<Movie>> GetByReleaseDate(DateTime releaseDate);
+        Task<IEnumerable<Movie>> GetByReleaseDate(int releaseDate);
+        Task<IEnumerable<Movie>> GetRentedMovies();
+        Task<IEnumerable<Movie>> SortByGenre();
+        Task<IEnumerable<Movie>> SortByReleaseDate();
     }
 }
